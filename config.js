@@ -7,9 +7,10 @@ module.exports = {
   WEDDING: {
     couple: 'Лёша и Надюша',
     date: '21.11.2026',
-    dateLong: '21 ноября 2026',
-    time: '16:00',
-    place: 'Lake View Villa',
+    dateShort: '21.11.26',
+    time: '16:30',
+    place: 'Усадьба «Edel House»',
+    address: 'Минская обл., д. Колодищи, ул. Георгиевская 1',
     mapUrl: 'https://yandex.ru/maps/', // замени на реальную ссылку
     dressCode:
       'будем рады, если отдадите предпочтение глубоким оттенкам, не ярким тонам ' +

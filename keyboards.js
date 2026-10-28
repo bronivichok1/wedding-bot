@@ -1,33 +1,30 @@
-// Экран 1: свободны ли вы 21.11.2026
 const dateMenu = {
   reply_markup: {
     inline_keyboard: [
-      [{ text: 'Да', callback_data: 'date_yes' }],
-      [{ text: 'Всегда да', callback_data: 'date_always' }],
-      [{ text: 'Для вас — да', callback_data: 'date_foryou' }],
+      [{ text: 'Да', callback_data: 'date_yes', style: 'primary' }],
+      [{ text: 'Всегда да', callback_data: 'date_always', style: 'primary' }],
+      [{ text: 'Для вас — да', callback_data: 'date_foryou', style: 'primary' }],
     ],
   },
 };
 
-// Экран 2: проведёте дату активно и в приятной компании?
 const companyMenu = {
   reply_markup: {
     inline_keyboard: [
-      [{ text: 'Разумеется', callback_data: 'company_sure' }],
-      [{ text: 'Конечно', callback_data: 'company_ofcourse' }],
-      [{ text: 'Бесспорно', callback_data: 'company_undoubtedly' }],
+      [{ text: 'Разумеется', callback_data: 'company_sure', style: 'primary' }],
+      [{ text: 'Конечно', callback_data: 'company_ofcourse', style: 'primary' }],
+      [{ text: 'Бесспорно', callback_data: 'company_undoubtedly', style: 'primary' }],
     ],
   },
 };
 
-// Экран 3: финальное меню после приглашения
 const finalMenu = {
   reply_markup: {
     inline_keyboard: [
-      [{ text: '📍 Где и когда', callback_data: 'place' }],
-      [{ text: '👗 Дресс-код', callback_data: 'dresscode' }],
-      [{ text: '✅ Я приду', callback_data: 'confirm' }],
-      [{ text: '❌ Не смогу', callback_data: 'decline' }],
+      [{ text: '📍 Где и когда', callback_data: 'place', style: 'primary' }],
+      [{ text: '👗 Дресс-код', callback_data: 'dresscode', style: 'primary' }],
+      [{ text: '✅ Я приду', callback_data: 'confirm', style: 'primary' }],
+      [{ text: '❌ Не смогу', callback_data: 'decline', style: 'primary' }],
     ],
   },
 };

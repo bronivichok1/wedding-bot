@@ -15,15 +15,15 @@ const bot = new TelegramBot(BOT_TOKEN, {
   },
 });
 
-// /start — приветствие
+// /start — приветствие + вопрос 1
 bot.onText(/\/start/, (msg) => {
   const name = msg.from.first_name || 'друг';
   bot.sendMessage(
     msg.chat.id,
     `Доброго дня, ${name}! ☀️\n\n` +
       `Вас приветствуют ${WEDDING.couple} ♥️\n\n` +
-      `Скажите, пожалуйста, свободны ли Вы ${WEDDING.date}?`,
-    dateMenu
+      `1️⃣ Скажите, пожалуйста, свободны ли Вы *${WEDDING.date}*?`,
+    { parse_mode: 'Markdown', ...dateMenu }
   );
 });
 
@@ -34,32 +34,29 @@ bot.on('callback_query', (query) => {
   const data = query.data;
 
   switch (data) {
-    // --- Экран 1: дата ---
+    // --- Вопрос 1: дата ---
     case 'date_yes':
     case 'date_always':
     case 'date_foryou':
       bot.sendMessage(
         chatId,
-        `Как чудесно! 🥰\n\n` +
-          `А хотите провести эту дату активно и в приятной компании?`,
+        `2️⃣ Хотите провести этот вечер вкусно, красиво и в приятной компании?`,
         companyMenu
       );
       break;
 
-    // --- Экран 2: компания ---
+    // --- Вопрос 2: компания ---
     case 'company_sure':
     case 'company_ofcourse':
     case 'company_undoubtedly':
       bot.sendMessage(
         chatId,
-        `Мы так и знали! 🎉\n\n` +
-          `Ждём Вас *${WEDDING.date}* в *${WEDDING.time}*\n` +
-          `📍 *${WEDDING.place}* ♥️\n\n` +
-          `_Дресс-код:_ ${WEDDING.dressCode}`,
-        {
-          parse_mode: 'Markdown',
-          ...finalMenu,
-        }
+        `Класс!) До встречи) 🥂\n\n` +
+          `Ждём Вас *${WEDDING.dateShort}* в *${WEDDING.time}*\n` +
+          `в ${WEDDING.place} ♥️\n` +
+          `_(${WEDDING.address})_\n\n` +
+          `👗 *Дресс-код:* ${WEDDING.dressCode}`,
+        { parse_mode: 'Markdown', ...finalMenu }
       );
       break;
 
@@ -67,7 +64,8 @@ bot.on('callback_query', (query) => {
     case 'place':
       bot.sendMessage(
         chatId,
-        `📍 *Место проведения:*\n${WEDDING.place}\n\n` +
+        `📍 *${WEDDING.place}*\n${WEDDING.address}\n\n` +
+          `🗓 *${WEDDING.dateShort}* в *${WEDDING.time}*\n\n` +
           `🗺 [Открыть на карте](${WEDDING.mapUrl})`,
         { parse_mode: 'Markdown' }
       );
@@ -86,7 +84,7 @@ bot.on('callback_query', (query) => {
       bot.sendMessage(
         chatId,
         `Ура! 🎉 Мы очень рады, что Вы будете с нами!\n` +
-          `Ждём Вас ${WEDDING.date} в ${WEDDING.time} в ${WEDDING.place} ♥️`
+          `Ждём Вас ${WEDDING.dateShort} в ${WEDDING.time} в ${WEDDING.place} ♥️`
       );
       break;
 
